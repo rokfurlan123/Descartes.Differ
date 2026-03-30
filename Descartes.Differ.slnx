@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="src/Descartes.Api/Descartes.Api.csproj" />
+  <Project Path="src/Descartes.Business/Descartes.Business.csproj" />
+  <Project Path="src/Descartes.Test/Descartes.Test.csproj" />
+</Solution>

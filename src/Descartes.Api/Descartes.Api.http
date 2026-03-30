@@ -1,0 +1,46 @@
+@host = http://localhost:5000
+@id = 1
+
+### Not found before both sides are present
+GET {{host}}/v1/diff/{{id}}
+
+### Store left
+PUT {{host}}/v1/diff/{{id}}/left
+Content-Type: application/json
+
+{
+  "data": "AAAAAA=="
+}
+
+### Store right
+PUT {{host}}/v1/diff/{{id}}/right
+Content-Type: application/json
+
+{
+  "data": "AAAAAA=="
+}
+
+### Read diff (Equals)
+GET {{host}}/v1/diff/{{id}}
+
+### Store right with different content
+PUT {{host}}/v1/diff/{{id}}/right
+Content-Type: application/json
+
+{
+  "data": "AQABAQ=="
+}
+
+### Read diff (ContentDoNotMatch)
+GET {{host}}/v1/diff/{{id}}
+
+### Store left with different size
+PUT {{host}}/v1/diff/{{id}}/left
+Content-Type: application/json
+
+{
+  "data": "AAA="
+}
+
+### Read diff (SizeDoNotMatch)
+GET {{host}}/v1/diff/{{id}}
